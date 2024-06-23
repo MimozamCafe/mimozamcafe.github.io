@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MENÜ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        /* Genel stiller */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        /* Header stilleri */
+        .menu-container {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .menu-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .menu-header h1 {
+            margin: 0;
+            font-size: 1.8em;
+            color: #ff7700;
+            text-align: center;
+            flex: 1;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            background-color: #e67e22;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        /* Menü kategorileri */
+        .menu-category {
+            margin-bottom: 20px;
+        }
+
+        .menu-category h2 {
+            border-bottom: 2px solid #e67e22;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: #e67e22;
+            cursor: pointer;
+        }
+
+        .menu-items {
+            display: none;
+            transition: max-height 0.5s ease-out;
+        }
+
+        .menu-category.open .menu-items {
+            display: block;
+        }
+
+        /* Menü öğeleri */
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item img:hover {
+            transform: scale(1.1);
+        }
+
+        .menu-item .details {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #fff;
+        }
+
+        .menu-item .price {
+            font-size: 1.2em;
+            color: #e67e22;
+        }
+
+        /* Modal stilleri */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform: scale(0)} 
+            to {transform: scale(1)}
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Medya sorguları */
+        @media only screen and (max-width: 768px) {
+            .menu-container {
+                padding: 10px;
+            }
+
+            .menu-header h1 {
+                font-size: 1.5em;
+            }
+
+            .logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .menu-item img {
+                width: 80px;
+                height: 80px;
+                margin-right: 5px;
+            }
+
+            .menu-item h3 {
+                font-size: 1em;
+            }
+
+            .menu-item .price {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="menu-container">
+        
+        <div class="menu-header">
+            <img class="logo" src="logo.jpeg" alt="Logo">
+            <h1>MİMOZA'M CAFE MENÜ</h1>
+        </div>
+
+        <div class="menu-category">
+            <h2 onclick="toggleMenu(this)">Kahvaltılar</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="images/serpme.png" alt="Serpme Kahvaltı" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Serpme Kahvaltı (2 Kişilik)</h3>
+                        </div>
+                        <div class="price">350 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/kahvalti_tabagi.jpg" alt="Kahvaltı Tabağı" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Kahvaltı Tabağı (Tek Kişilik)</h3>
+                        </div>
+                        <div class="price">150 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/kahvaltıtabagı2.png" alt="Söğüş Tabağı" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Söğüş Tabağı</h3>
+                        </div>
+                        <div class="price">75 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/yumurta.png" alt="Sahanda Yumurta" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Sahanda Yumurta (2 Adet)</h3>
+                        </div>
+                        <div class="price">85 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/menemen.png" alt="Menemen" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Menemen</h3>
+                        </div>
+                        <div class="price">120 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/menemen.png" alt="Kaşarlı Menemen" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Kaşarlı Menemen</h3>
+                        </div>
+                        <div class="price">130 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/menemen.png" alt="Sucuklu Menemen" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Sucuklu Menemen</h3>
+                        </div>
+                        <div class="price">150 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/menemen.png" alt="Sucuklu Kaşarlı Menemen" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Sucuklu Kaşarlı Menemen</h3>
+                        </div>
+                        <div class="price">170 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/patso.jpeg" alt="Patso" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Patso</h3>
+                        </div>
+                        <div class="price">75 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/patso.jpeg" alt="Su Böreği (Dilim)" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Su Böreği (Dilim)</h3>
+                        </div>
+                        <div class="price">100 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/patso.jpeg" alt="Sade Omlet" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Sade Omlet</h3>
+                        </div>
+                        <div class="price">75 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/patso.jpeg" alt="Sucuklu Omlet" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Sucuklu Omlet</h3>
+                        </div>
+                        <div class="price">95 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/patso.jpeg" alt="Kaşarlı Omlet" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Kaşarlı Omlet</h3>
+                        </div>
+                        <div class="price">85 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/patso.jpeg" alt="Karışık Omlet" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Karışık Omlet</h3>
+                        </div>
+                        <div class="price">100 TL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="menu-category">
+            <h2 onclick="toggleMenu(this)">Tost Çeşitleri</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="images/sucuklu.jpg" alt="Sucuklu Tost" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Sucuklu Tost</h3>
+                        </div>
+                        <div class="price">80 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/kasarlı.png" alt="Kaşarlı Tost" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Kaşarlı Tost</h3>
+                        </div>
+                        <div class="price">70 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/karisik.png" alt="Karışık Tost" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Karışık Tost</h3>
+                        </div>
+                        <div class="price">90 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/yumurtalı.jpg" alt="Yumurtalı Kaşarlı Tost" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Yumurtalı Kaşarlı Tost</h3>
+                        </div>
+                        <div class="price">90 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/sucukluyumartalı.jpg" alt="Yumurtalı Sucuklu Tost" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Yumurtalı Sucuklu Tost</h3>
+                        </div>
+                        <div class="price">110 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/sucukluyumartalı.jpg" alt="Yumurtalı Karışık Tost" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Yumurtalı Karışık Tost</h3>
+                        </div>
+                        <div class="price">120 TL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category">
+            <h2 onclick="toggleMenu(this)">Makarna Çeşitleri</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="images/kori-soslu-tavuklu-makarna.jpg" alt="Köri Soslu Tavuklu Makarna" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Köri Soslu Tavuklu Makarna</h3>
+                        </div>
+                        <div class="price">175 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/barbeku-soslu-tavuklu-makarna.jpg" alt="Barbekü Soslu Tavuklu Makarna" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Barbekü Soslu Tavuklu Makarna</h3>
+                        </div>
+                        <div class="price">175 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/chilli-soslu-tavuklu-makarna.jpg" alt="Chilli Soslu Tavuklu Makarna" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Chilli Soslu Tavuklu Makarna</h3>
+                        </div>
+                        <div class="price">175 TL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="menu-category">
+            <h2 onclick="toggleMenu(this)">Atıştırmalıklar</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="images/kizarmis-patates.jpg" alt="Kızarmış Patates" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Kızarmış Patates</h3>
+                        </div>
+                        <div class="price">80 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/citir-tavuk-sepeti.jpg" alt="Çıtır Tavuk Sepeti" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Çıtır Tavuk Sepeti</h3>
+                        </div>
+                        <div class="price">175 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/sigara-boregi.jpg" alt="Sigara Böreği" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Sigara Böreği</h3>
+                        </div>
+                        <div class="price">90 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/sogan-halkasi.jpg" alt="Soğan Halkası" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Soğan Halkası</h3>
+                        </div>
+                        <div class="price">75 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/cicek-sosis.jpg" alt="Çiçek Sosis" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Çiçek Sosis</h3>
+                        </div>
+                        <div class="price">75 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/aperatif-tabagi.jpg" alt="Aperatif Tabağı" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Aperatif Tabağı</h3>
+                        </div>
+                        <div class="price">250 TL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="menu-category">
+            <h2 onclick="toggleMenu(this)">Salata Çeşitleri</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="images/tavuklu-sezar-salata.jpg" alt="Tavuklu Sezar Salata" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Tavuklu Sezar Salata</h3>
+                        </div>
+                        <div class="price">200 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/ton-balikli-salata.jpg" alt="Ton Balıklı Salata" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Ton Balıklı Salata</h3>
+                        </div>
+                        <div class="price">225 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/beyaz-peynirli-salata.jpg" alt="Beyaz Peynirli Salata" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Beyaz Peynirli Salata</h3>
+                        </div>
+                        <div class="price">100 TL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="menu-category">
+            <h2 onclick="toggleMenu(this)">Burger Çeşitleri</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="images/sucuklu.jpg" alt="Piliç Hamburger" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Piliç Hamburger</h3>
+                        </div>
+                        <div class="price">130 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/kasarlı.png" alt="Piliç Çizburger" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Piliç Çizburger</h3>
+                        </div>
+                        <div class="price">150 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/börek.png" alt="Dana Burger" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Dana Burger</h3>
+                        </div>
+                        <div class="price">180 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/yumurtalı.jpg" alt="Dana Çizburger" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Dana Çizburger</h3>
+                        </div>
+                        <div class="price">200 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/sucukluyumartalı.jpg" alt="Karışık Pizza" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Karışık Pizza</h3>
+                        </div>
+                        <div class="price">200 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/sucukluyumartalı.jpg" alt="Tavuklu Sandviç" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Tavuklu Sandviç</h3>
+                        </div>
+                        <div class="price">150 TL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="menu-category">
+            <h2 onclick="toggleMenu(this)">Sıcak İçecekler</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="images/cay.jpg" alt="Çay" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Çay</h3>
+                        </div>
+                        <div class="price">10 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/turkkahvesi.jpg" alt="Türk Kahvesi" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Türk Kahvesi</h3>
+                        </div>
+                        <div class="price">50 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/damlasakiz.jpg" alt="Damla Sakızlı Türk Kahvesi" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Damla Sakızlı Türk Kahvesi</h3>
+                        </div>
+                        <div class="price">60 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/dibekkahvesi.jpg" alt="Dibek Türk Kahvesi" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Dibek Türk Kahvesi</h3>
+                        </div>
+                        <div class="price">60 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/salep.jpg" alt="Salep" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Salep</h3>
+                        </div>
+                        <div class="price">75 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/bitkicayi.jpg" alt="Bitki Çayı Çeşitleri" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Bitki Çayı Çeşitleri</h3>
+                        </div>
+                        <div class="price">50 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/nescafe.png" alt="Nescafe (Sade)" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Nescafe (Sade)</h3>
+                        </div>
+                        <div class="price">50 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/nescafe-sutlu.png" alt="Nescafe (Sütlü)" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Nescafe (Sütlü)</h3>
+                        </div>
+                        <div class="price">60 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/sicakcik.png" alt="Sıcak Çikolata" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Sıcak Çikolata</h3>
+                        </div>
+                        <div class="price">75 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/filtre.jpg" alt="Filtre Kahve" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Filtre Kahve</h3>
+                        </div>
+                        <div class="price">80 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/espresso.png" alt="Espresso" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Espresso</h3>
+                        </div>
+                        <div class="price">75 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/double-espresso.png" alt="Double Espresso" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Double Espresso</h3>
+                        </div>
+                        <div class="price">130 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/americano.png" alt="Americano" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Americano</h3>
+                        </div>
+                        <div class="price">80 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/mocha.png" alt="Mocha" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Mocha</h3>
+                        </div>
+                        <div class="price">85 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/white-chocolate-mocha.png" alt="White Chocolate Mocha" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>White Chocolate Mocha</h3>
+                        </div>
+                        <div class="price">90 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/karamel-macchiato.png" alt="Karamel Macchiato" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Karamel Macchiato</h3>
+                        </div>
+                        <div class="price">90 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/latte.png" alt="Latte" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Latte</h3>
+                        </div>
+                        <div class="price">80 TL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="menu-category">
+            <h2 onclick="toggleMenu(this)">Soğuk Kahve Çeşitleri</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="images/iced-americano.jpg" alt="Iced Americano" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Iced Americano</h3>
+                        </div>
+                        <div class="price">80 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/iced-latte.jpg" alt="Iced Latte" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Iced Latte</h3>
+                        </div>
+                        <div class="price">80 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/iced-mocha.jpg" alt="Iced Mocha" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Iced Mocha</h3>
+                        </div>
+                        <div class="price">80 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/iced-white-mocha.jpg" alt="Iced White Mocha" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Iced White Mocha</h3>
+                        </div>
+                        <div class="price">80 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/iced-filtre.jpg" alt="Iced Filtre" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Iced Filtre</h3>
+                        </div>
+                        <div class="price">80 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/iced-caramel-latte.jpg" alt="Iced Caramel Latte" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Iced Caramel Latte</h3>
+                        </div>
+                        <div class="price">80 TL</div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+
+        <div class="menu-category">
+            <h2 onclick="toggleMenu(this)">Soğuk İçecekler</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="images/limonata.png" alt="Redbull" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Limonata</h3>
+                        </div>
+                        <div class="price">50 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/orange-juice.png" alt="Sıkma Portakal Suyu" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Sıkma Portakal Suyu</h3>
+                        </div>
+                        <div class="price">75 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/energy-drink.png" alt="Enerji İçeceği" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Enerji İçeceği</h3>
+                        </div>
+                        <div class="price">60 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/cola.png" alt="Cola" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Cola</h3>
+                        </div>
+                        <div class="price">50 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/fanta.png" alt="Fanta" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Fanta</h3>
+                        </div>
+                        <div class="price">50 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/sprite.png" alt="Sprite" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Sprite</h3>
+                        </div>
+                        <div class="price">50 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/cappy.png" alt="Cappy Çeşitleri" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Cappy Çeşitleri</h3>
+                        </div>
+                        <div class="price">50 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/fuse-tea.png" alt="Fuse Tea" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Fuse Tea</h3>
+                        </div>
+                        <div class="price">50 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/ayran.png" alt="Ayran" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Ayran</h3>
+                        </div>
+                        <div class="price">50 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/churcill.png" alt="Churcill" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Churcill</h3>
+                        </div>
+                        <div class="price">50 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/plain-soda.png" alt="Sade Soda" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Sade Soda</h3>
+                        </div>
+                        <div class="price">20 TL</div>
+                    </div>
+                </div>
+        
+                <div class="menu-item">
+                    <img src="images/fruity-soda.png" alt="Meyveli Soda" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Meyveli Soda</h3>
+                        </div>
+                        <div class="price">25 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/frozen.png" alt="Su" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Frozen Çeşitleri</h3>
+                        </div>
+                        <div class="price">100 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/milkshake.png" alt="Su" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Milkshake Çeşitleri</h3>
+                        </div>
+                        <div class="price">80 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/water.png" alt="Su" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Su</h3>
+                        </div>
+                        <div class="price">15 TL</div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+
+        <div class="menu-category">
+            <h2 onclick="toggleMenu(this)">Tatlılar</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="images/magnolya.jpg" alt="Magnolya" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Magnolya</h3>
+                        </div>
+                        <div class="price">100 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/tiramisu.jpg" alt="Tiramisu" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Tiramisu</h3>
+                        </div>
+                        <div class="price">75 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/pasta.jpg" alt="Pasta (Adet)" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Pasta (Adet)</h3>
+                        </div>
+                        <div class="price">115 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/soguk-baklava.jpg" alt="Soğuk Baklava (Kilo)" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Soğuk Baklava (Kilo)</h3>
+                        </div>
+                        <div class="price">550 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/spangle.jpg" alt="Spangle" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Spangle</h3>
+                        </div>
+                        <div class="price">100 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/profiterol.jpg" alt="Profiterol" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Profiterol</h3>
+                        </div>
+                        <div class="price">100 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/ekler.jpg" alt="Ekler (Adet)" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Ekler (Adet)</h3>
+                        </div>
+                        <div class="price">20 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/sutlac.jpg" alt="Sütlaç" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Sütlaç</h3>
+                        </div>
+                        <div class="price">75 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/medovik.jpg" alt="Medovik" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Medovik</h3>
+                        </div>
+                        <div class="price">100 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/kuru-pasta.jpg" alt="Kuru Pasta (Kilo)" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Kuru Pasta (Kilo)</h3>
+                        </div>
+                        <div class="price">350 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/trilice.jpg" alt="Triliçe" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Triliçe</h3>
+                        </div>
+                        <div class="price">75 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/donut.jpg" alt="Donut" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Donut</h3>
+                        </div>
+                        <div class="price">50 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/kadife-kek.jpg" alt="Kadife Kek" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Kadife Kek</h3>
+                        </div>
+                        <div class="price">100 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/velvet.jpg" alt="Velvet" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Velvet</h3>
+                        </div>
+                        <div class="price">100 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/kulah-dondurma.jpg" alt="Külahta Dondurma (Top)" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Külahta Dondurma (Top)</h3>
+                        </div>
+                        <div class="price">20 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/dondurma-servis.jpg" alt="Dondurma Servis (Top)" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Dondurma Servis (Top)</h3>
+                        </div>
+                        <div class="price">25 TL</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/waffle.jpg" alt="Waffle" onclick="openModal(this)">
+                    <div class="details">
+                        <div>
+                            <h3>Waffle</h3>
+                        </div>
+                        <div class="price">200 TL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+    <div id="myModal" class="modal" onclick="closeModal(event)">
+        <span class="close" onclick="closeModal(event)">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <script>
+        function toggleMenu(header) {
+            const category = header.parentNode;
+            category.classList.toggle('open');
+        }
+
+        function openModal(img) {
+            const modal = document.getElementById("myModal");
+            const modalImg = document.getElementById("img01");
+            modal.style.display = "block";
+            modalImg.src = img.src;
+        }
+
+        function closeModal(event) {
+            const modal = document.getElementById("myModal");
+            const modalImg = document.getElementById("img01");
+            if (event.target !== modalImg) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
