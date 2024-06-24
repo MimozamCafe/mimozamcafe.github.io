@@ -156,36 +156,48 @@
             text-decoration: none;
             cursor: pointer;
         }
+        .description {
+            font-size: 12px; /* Küçük font boyutu */
+            color: #555; /* Yazı rengi, isteğe bağlı olarak değiştirilebilir */
+            margin-top: 5px; /* Üstten biraz boşluk */
+        }
 
         /* Medya sorguları */
         @media only screen and (max-width: 768px) {
-            .menu-container {
-                padding: 10px;
-            }
+    .menu-container {
+        padding: 10px;
+    }
 
-            .menu-header h1 {
-                font-size: 1.5em;
-            }
+    .menu-header h1 {
+        font-size: 1.5em;
+    }
 
-            .logo {
-                width: 80px;
-                height: 80px;
-            }
+    .logo {
+        width: 80px;
+        height: 80px;
+    }
 
-            .menu-item img {
-                width: 80px;
-                height: 80px;
-                margin-right: 5px;
-            }
+    .menu-item img {
+        width: 80px;
+        height: 80px;
+        margin-right: 5px;
+    }
 
-            .menu-item h3 {
-                font-size: 1em;
-            }
+    .menu-item h3 {
+        font-size: 1em;
+    }
 
-            .menu-item .price {
-                font-size: 1em;
-            }
-        }
+    .menu-item .price {
+        font-size: 1em;
+    }
+
+    .menu-item .description {
+        font-size: 0.8em; 
+        color: #555;
+        margin-top: 5px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -201,10 +213,11 @@
             <h2 onclick="toggleMenu(this)">Kahvaltılar</h2>
             <div class="menu-items">
                 <div class="menu-item">
-                    <img src="images/serpme.png" alt="Serpme Kahvaltı" onclick="openModal(this)">
+                    <img src="images/serpme.jpg" alt="Serpme Kahvaltı" onclick="openModal(this)">
                     <div class="details">
                         <div>
                             <h3>Serpme Kahvaltı (2 Kişilik)</h3>
+                            <p class="description">Patates Kızartması, Parmak Börek(2), Sosis(2), Sahanda Yumurta(2), Yeşilzeytin, Siyah Zeytin, Tereyağı, Bal, Helva, Domates, Salatalık, Kahvaltılık Sos, Reçel Çeşitleri, Salam</p>
                         </div>
                         <div class="price">350 TL</div>
                     </div>
@@ -214,6 +227,7 @@
                     <div class="details">
                         <div>
                             <h3>Kahvaltı Tabağı (Tek Kişilik)</h3>
+                            <p class="description">Domates, Salatalık, Peynir, Haşlanmış Yumurta, Parmak Börek(2), Tereyağı, Bal, Siyah Zeytin, Yeşilzeytin, Reçel</p>
                         </div>
                         <div class="price">150 TL</div>
                     </div>
@@ -223,6 +237,7 @@
                     <div class="details">
                         <div>
                             <h3>Söğüş Tabağı</h3>
+                            <p class="description">Domates, Salatalık, Yeşillik</p>
                         </div>
                         <div class="price">75 TL</div>
                     </div>
@@ -237,7 +252,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="images/menemen.png" alt="Menemen" onclick="openModal(this)">
+                    <img src="images/menemen.jpg" alt="Menemen" onclick="openModal(this)">
                     <div class="details">
                         <div>
                             <h3>Menemen</h3>
@@ -246,7 +261,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="images/menemen.png" alt="Kaşarlı Menemen" onclick="openModal(this)">
+                    <img src="images/kasarlimenemen.jpg" alt="Kaşarlı Menemen" onclick="openModal(this)">
                     <div class="details">
                         <div>
                             <h3>Kaşarlı Menemen</h3>
@@ -255,7 +270,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="images/menemen.png" alt="Sucuklu Menemen" onclick="openModal(this)">
+                    <img src="images/sucuklumenemen.png" alt="Sucuklu Menemen" onclick="openModal(this)">
                     <div class="details">
                         <div>
                             <h3>Sucuklu Menemen</h3>
@@ -264,7 +279,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="images/menemen.png" alt="Sucuklu Kaşarlı Menemen" onclick="openModal(this)">
+                    <img src="images/sucukkasarmenemen.jpg" alt="Sucuklu Kaşarlı Menemen" onclick="openModal(this)">
                     <div class="details">
                         <div>
                             <h3>Sucuklu Kaşarlı Menemen</h3>
@@ -282,7 +297,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="images/patso.jpeg" alt="Su Böreği (Dilim)" onclick="openModal(this)">
+                    <img src="images/suboregi.jpeg" alt="Su Böreği (Dilim)" onclick="openModal(this)">
                     <div class="details">
                         <div>
                             <h3>Su Böreği (Dilim)</h3>
@@ -291,7 +306,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="images/patso.jpeg" alt="Sade Omlet" onclick="openModal(this)">
+                    <img src="images/sadeomlet.jpeg" alt="Sade Omlet" onclick="openModal(this)">
                     <div class="details">
                         <div>
                             <h3>Sade Omlet</h3>
@@ -300,7 +315,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="images/patso.jpeg" alt="Sucuklu Omlet" onclick="openModal(this)">
+                    <img src="images/sucukluomelt.jpeg" alt="Sucuklu Omlet" onclick="openModal(this)">
                     <div class="details">
                         <div>
                             <h3>Sucuklu Omlet</h3>
@@ -309,7 +324,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="images/patso.jpeg" alt="Kaşarlı Omlet" onclick="openModal(this)">
+                    <img src="images/kasarliomlet.jpeg" alt="Kaşarlı Omlet" onclick="openModal(this)">
                     <div class="details">
                         <div>
                             <h3>Kaşarlı Omlet</h3>
@@ -318,7 +333,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="images/patso.jpeg" alt="Karışık Omlet" onclick="openModal(this)">
+                    <img src="images/karisik.jpeg" alt="Karışık Omlet" onclick="openModal(this)">
                     <div class="details">
                         <div>
                             <h3>Karışık Omlet</h3>
@@ -369,7 +384,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="images/sucukluyumartalı.jpg" alt="Yumurtalı Sucuklu Tost" onclick="openModal(this)">
+                    <img src="images/sucukluyumartali.jpg" alt="Yumurtalı Sucuklu Tost" onclick="openModal(this)">
                     <div class="details">
                         <div>
                             <h3>Yumurtalı Sucuklu Tost</h3>
@@ -378,7 +393,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="images/sucukluyumartalı.jpg" alt="Yumurtalı Karışık Tost" onclick="openModal(this)">
+                    <img src="images/sucukluyumartali.jpg" alt="Yumurtalı Karışık Tost" onclick="openModal(this)">
                     <div class="details">
                         <div>
                             <h3>Yumurtalı Karışık Tost</h3>
@@ -438,7 +453,7 @@
                     <img src="images/citir-tavuk-sepeti.jpg" alt="Çıtır Tavuk Sepeti" onclick="openModal(this)">
                     <div class="details">
                         <div>
-                            <h3>Çıtır Tavuk Sepeti</h3>
+                            <h3>Çıtır Tavuk Sepeti(6 Adet)</h3>
                         </div>
                         <div class="price">175 TL</div>
                     </div>
@@ -447,7 +462,7 @@
                     <img src="images/sigara-boregi.jpg" alt="Sigara Böreği" onclick="openModal(this)">
                     <div class="details">
                         <div>
-                            <h3>Sigara Böreği</h3>
+                            <h3>Parmak Börek(8 Adet)</h3>
                         </div>
                         <div class="price">90 TL</div>
                     </div>
@@ -456,7 +471,7 @@
                     <img src="images/sogan-halkasi.jpg" alt="Soğan Halkası" onclick="openModal(this)">
                     <div class="details">
                         <div>
-                            <h3>Soğan Halkası</h3>
+                            <h3>Soğan Halkası(7 Adet)</h3>
                         </div>
                         <div class="price">75 TL</div>
                     </div>
@@ -465,7 +480,7 @@
                     <img src="images/cicek-sosis.jpg" alt="Çiçek Sosis" onclick="openModal(this)">
                     <div class="details">
                         <div>
-                            <h3>Çiçek Sosis</h3>
+                            <h3>Çiçek Sosis(7 Adet)</h3>
                         </div>
                         <div class="price">75 TL</div>
                     </div>
@@ -475,6 +490,7 @@
                     <div class="details">
                         <div>
                             <h3>Aperatif Tabağı</h3>
+                            <p class="description">Patates Kızartması, Çıtır Tavuk(2 Adet), Parmak Börek(2 Adet), Çiçek Sosis(2 Adet), Patates Kroket(3 Adet), Soğan Halkası(3 Adet)</p>
                         </div>
                         <div class="price">250 TL</div>
                     </div>
@@ -820,7 +836,7 @@
             <h2 onclick="toggleMenu(this)">Soğuk İçecekler</h2>
             <div class="menu-items">
                 <div class="menu-item">
-                    <img src="images/limonata.png" alt="Limonata" onclick="openModal(this)">
+                    <img src="images/limonata.png" alt="Redbull" onclick="openModal(this)">
                     <div class="details">
                         <div>
                             <h3>Limonata</h3>
