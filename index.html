@@ -16,6 +16,55 @@
             color: #ffa500; /* Orange text color */
             scroll-behavior: smooth; /* Smooth scrolling */
         }
+        
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #ffffff;
+            color: #ffa500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 2s ease 2s forwards; /* 2 saniye sonra kaybolur */
+        }
+
+        #welcome-screen h1 {
+            font-size: 4em;
+            white-space: nowrap; /* Prevents text wrapping */
+            overflow: hidden; /* Hides text overflow */
+            border-right: .15em solid #ffa500; /* Cursor effect */
+            animation: typewriter 3s steps(30, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #ffa500; }
+        }
+
+        @media only screen and (max-width: 768px) {
+            #welcome-screen h1 {
+                font-size: 3em; /* Smaller font size for tablets */
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            #welcome-screen h1 {
+                font-size: 2em; /* Smaller font size for mobile devices */
+            }
+        }
 
         header {
             background-color: #383e42; /* Anthracite gray background */
@@ -197,6 +246,12 @@
     </style>
 </head>
 <body>
+
+    <div id="welcome-screen">
+        <h1>Mimoza'm Cafe</h1>
+    </div>
+    
+
     <header>
         <nav>
             <ul>
@@ -216,7 +271,7 @@
                 Your browser does not support the video tag.
             </video>
             <div class="video-overlay">
-                <h1>Mimoza'm Cafe</h1>
+                <h1>Hoşgeldiniz!</h1>
                 <p>Seni özel hissettiren kişiyle Mimozam Cafe'e gelirsin, havuz önünde eğlenceli zaman geçirirsin.</p>
             </div>
         </div>
@@ -250,31 +305,31 @@
                 </tr>
                 <tr>
                     <td>Pazartesi</td>
-                    <td>07:00 - 01:00</td>
+                    <td>07:00 - 24:00</td>
                 </tr>
                 <tr>
                     <td>Salı</td>
-                    <td>07:00 - 01:00</td>
+                    <td>07:00 - 24:00</td>
                 </tr>
                 <tr>
                     <td>Çarşamba</td>
-                    <td>07:00 - 01:00</td>
+                    <td>07:00 - 24:00</td>
                 </tr>
                 <tr>
                     <td>Perşembe</td>
-                    <td>07:00 - 01:00</td>
+                    <td>07:00 - 24:00</td>
                 </tr>
                 <tr>
                     <td>Cuma</td>
-                    <td>07:00 - 01:00</td>
+                    <td>07:00 - 24:00</td>
                 </tr>
                 <tr>
                     <td>Cumartesi</td>
-                    <td>07:00 - 01:00</td>
+                    <td>07:00 - 24:00</td>
                 </tr>
                 <tr>
                     <td>Pazar</td>
-                    <td>07:00 - 01:00</td>
+                    <td>07:00 - 24:00</td>
                 </tr>
             </table>
         </div>
