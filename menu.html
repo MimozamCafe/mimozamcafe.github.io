@@ -32,17 +32,32 @@
         .menu-header h1 {
             margin: 0;
             font-size: 1.8em;
-            color: #ff7700;
+            color: #ffd700;
             text-align: center;
             flex: 1;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo-link:hover {
+            transform: scale(1.05);
         }
 
         .logo {
             width: 100px;
             height: 100px;
-            background-color: #e67e22;
+            background-color: #ffd700;
             border-radius: 50%;
             margin-left: 10px;
+            transition: all 0.3s ease;
+            object-fit: cover;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         /* Menü kategorileri */
@@ -51,12 +66,17 @@
         }
 
         .menu-category h2 {
-            border-bottom: 2px solid #e67e22;
+            border-bottom: 2px solid #ffd700;
             padding-bottom: 10px;
             margin-bottom: 10px;
             font-size: 1.5em;
-            color: #e67e22;
+            color: #ffd700;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .menu-category h2:hover {
+            color: #e6c200;
         }
 
         .menu-items {
@@ -108,7 +128,8 @@
 
         .menu-item .price {
             font-size: 1.2em;
-            color: #e67e22;
+            color: #ffd700;
+            font-weight: 600;
         }
 
         /* Modal stilleri */
@@ -144,7 +165,7 @@
             position: absolute;
             top: 15px;
             right: 35px;
-            color: #fff;
+            color: #ffd700;
             font-size: 40px;
             font-weight: bold;
             transition: 0.3s;
@@ -152,14 +173,14 @@
 
         .close:hover,
         .close:focus {
-            color: #bbb;
+            color: #e6c200;
             text-decoration: none;
             cursor: pointer;
         }
         .description {
-            font-size: 12px; /* Küçük font boyutu */
-            color: #555; /* Yazı rengi, isteğe bağlı olarak değiştirilebilir */
-            margin-top: 5px; /* Üstten biraz boşluk */
+            font-size: 12px;
+            color: #ccc;
+            margin-top: 5px;
         }
 
         /* Medya sorguları */
@@ -175,6 +196,7 @@
     .logo {
         width: 80px;
         height: 80px;
+        font-size: 0.8rem;
     }
 
     .menu-item img {
@@ -193,7 +215,7 @@
 
     .menu-item .description {
         font-size: 0.8em; 
-        color: #555;
+        color: #ccc;
         margin-top: 5px;
     }
 }
@@ -205,7 +227,9 @@
     <div class="menu-container">
         
         <div class="menu-header">
-            <img class="logo" src="logo.jpeg" alt="Logo">
+            <a href="index.html" class="logo-link">
+                <img class="logo" src="logo.jpeg" alt="Logo">
+            </a>
             <h1>MİMOZA'M CAFE MENÜ</h1>
         </div>
 
