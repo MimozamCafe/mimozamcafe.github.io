@@ -44,4 +44,4 @@ A modern, responsive website for Mimoza'm Cafe featuring an interactive menu and
 - Smooth animations
 - Interactive hover states
 
-Project Link: [https://github.com/yourusername/mimozamcafe.github.io](https://github.com/yourusername/mimozamcafe.github.io) 
+Project Link: [https://github.com/MimozamCafe/mimozamcafe.github.io](https://github.com/MimozamCafe/mimozamcafe.github.io) 
