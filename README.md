@@ -1,4 +1,4 @@
-# Mimoza'm Cafe Website
+# Mimoza'm Cafe Website 
 
 A modern, responsive website for Mimoza'm Cafe featuring an interactive menu and beautiful UI design.
 
@@ -45,3 +45,6 @@ A modern, responsive website for Mimoza'm Cafe featuring an interactive menu and
 - Interactive hover states
 
 Project Link: [https://github.com/MimozamCafe/mimozamcafe.github.io](https://github.com/MimozamCafe/mimozamcafe.github.io) 
+
+
+MADE BY CANAKGUL
