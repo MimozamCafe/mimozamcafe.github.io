@@ -46,5 +46,4 @@ A modern, responsive website for Mimoza'm Cafe featuring an interactive menu and
 
 Project Link: [https://github.com/MimozamCafe/mimozamcafe.github.io](https://github.com/MimozamCafe/mimozamcafe.github.io) 
 
-
-MADE BY CANAKGUL
+made by can-akgul
